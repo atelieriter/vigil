@@ -14,7 +14,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ssh.infomaniak.com >> ~/.ssh/known_hosts
+          ssh-keyscan -H h2web489.infomaniak.com >> ~/.ssh/known_hosts
       - name: Deploy via rsync over SSH
         run: |
           rsync -avz --delete \
@@ -22,4 +22,4 @@ jobs:
             --exclude='.github' \
             --exclude='README.md' \
             ./ \
-            ${{ secrets.INFOMANIAK_USER }}@ssh.infomaniak.com:${{ secrets.INFOMANIAK_PATH }}/
+            ${{ secrets.INFOMANIAK_USER }}@h2web489.infomaniak.com:${{ secrets.INFOMANIAK_PATH }}/
